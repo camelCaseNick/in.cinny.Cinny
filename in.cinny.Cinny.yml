@@ -40,6 +40,12 @@ modules:
         type: file
         only-arches:
           - x86_64
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/cinnyapp/cinny-desktop/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: '"https://github.com/cinnyapp/cinny-desktop/releases/download/v" + $version +
+            "/cinny_" + $version + "_amd64.deb"'
       - url: https://github.com/cinnyapp/cinny-desktop.git
         commit: 1211b0ea698111006afb04b36a5a0111a856e111
         type: git
