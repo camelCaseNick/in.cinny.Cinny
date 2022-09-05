@@ -39,8 +39,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/libvips/libvips
-        tag: v8.12.2
-        commit: 5c249e0e8e7726fe8e5c88c921439a5fe3e94e6c
+        tag: v8.13.1
+        commit: a19f326d199407c312703a212a634b12e97b4a7a
         x-checker-data:
           type: git
           tag-pattern: ^v((?:\d+.)*\d+)$
@@ -49,8 +49,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/cinnyapp/cinny-desktop.git
-        tag: v2.0.4
-        commit: c8399677b514eeae309551e04d86cdd43914590e
+        tag: v2.1.3
+        commit: 3cce94ed3c15376eef1bc37ce70b4033d2ecb3f2
         x-checker-data:
           type: git
           tag-pattern: ^v((?:\d+.)*\d+)$
@@ -68,8 +68,7 @@ modules:
     buildsystem: simple
     build-commands:
       - ./setup_sdk_node_headers.sh
-      - for project in . cinny; do
-          npm ci --offline --legacy-peer-deps --prefix=$project;
+      - for project in . cinny; do npm ci --offline --legacy-peer-deps --prefix=$project;
         done
       - cargo --offline fetch --manifest-path src-tauri/Cargo.toml
       - npm run tauri build -- -b deb
